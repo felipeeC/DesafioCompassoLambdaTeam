@@ -8,7 +8,6 @@ import br.com.compasso.catalog.models.Pessoa;
 public class FilmeService {
 
 	private List<Filme> filmes = new ArrayList<>();
-	private int id = 0;
 
 	// Métodos
 
@@ -36,8 +35,7 @@ public class FilmeService {
 	}
 
 	public void adiciona(String descricao, String nome) {
-		id++;
-		Filme filme = new Filme(id, descricao, nome);
+		Filme filme = new Filme(descricao, nome);
 		if (descricao != null && nome != null) {
 			filmes.add(filme);
 		}

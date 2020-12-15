@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Filme {
-
-	private int id;
+	
+	private static int id;
 	private String descricao;
 	private String nome;
 	private String comentario;
@@ -21,20 +21,14 @@ public class Filme {
 		
 	}
 
-	public Filme(int id, String descricao, String nome) {
+	public Filme(String descricao, String nome) {
 		super();
-		id++;
-		this.id = id;
+		Filme.id++;
 		this.descricao = descricao;
 		this.nome = nome;
 		
 	}
 	
-	public Filme(String descricao, String nome) {
-		super();
-		this.descricao = descricao;
-		this.nome = nome;
-	}
 
 	//HashCode e Equals
 

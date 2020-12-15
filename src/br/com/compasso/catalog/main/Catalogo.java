@@ -47,6 +47,7 @@ public class Catalogo {
 			  id = sc.nextInt();
 			  sc.nextLine();
 			  filmeService.removeById(id);
+			  System.out.println("Filme Removido!");
 		    break;
 		  case 3:
 			  System.out.println("Você escolheu 3");
