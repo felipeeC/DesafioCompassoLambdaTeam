@@ -8,7 +8,7 @@ public class Pessoa {
 	
 	//Construtor
 	
-	public Pessoa(String nome, int idade, int id) {
+	public Pessoa(int id, String nome, int idade) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -19,29 +19,6 @@ public class Pessoa {
 		super();
 	}
 	
-	//Hashcode e Equals
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pessoa other = (Pessoa) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}
 	
 	//Getters e Setters
 
@@ -69,5 +46,25 @@ public class Pessoa {
 		this.idade = idade;
 	}
 	
+	@Override
+	public String toString() {
+		return this.id + "\t" + this.nome + "\t\t" + this.idade;
+	}
+	
+	//Equals
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		
+		Pessoa outraPessoa = (Pessoa) obj;
+		
+		if(this.nome != outraPessoa.nome) return false;
+		if(this.idade != outraPessoa.idade) return false;
+		
+		return  true;
+		
+	}	
 	
 }
