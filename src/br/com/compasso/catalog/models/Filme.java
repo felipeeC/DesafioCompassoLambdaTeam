@@ -18,15 +18,24 @@ public class Filme {
 
 	public Filme() {
 		super();
+		
 	}
 
 	public Filme(int id, String descricao, String nome) {
 		super();
+		id++;
 		this.id = id;
 		this.descricao = descricao;
 		this.nome = nome;
+		
 	}
 	
+	public Filme(String descricao, String nome) {
+		super();
+		this.descricao = descricao;
+		this.nome = nome;
+	}
+
 	//HashCode e Equals
 
 	@Override
