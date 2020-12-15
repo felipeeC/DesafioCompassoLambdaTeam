@@ -38,5 +38,9 @@ public class Categoria {
 	public void setAno(int ano) {
 		this.ano = ano;
 	}
+
+	public Tipo getGenero() {
+		return genero;
+	}
 	
 }

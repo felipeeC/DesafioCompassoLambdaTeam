@@ -8,7 +8,7 @@ public class Pessoa {
 	
 	//Construtor
 	
-	public Pessoa(String nome, int idade) {
+	public Pessoa(String nome, int idade, int id) {
 		super();
 		this.id = id;
 		this.nome = nome;
