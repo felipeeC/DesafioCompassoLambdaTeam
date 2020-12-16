@@ -39,7 +39,7 @@ public class PessoaService {
 		} else {
 			id++;
 			pessoas.add(novaPessoa);
-			System.out.println("Pessoa adicionada com sucesso");
+			System.out.println("Pessoa adicionada com sucesso!");
 		}
 	}
 	
