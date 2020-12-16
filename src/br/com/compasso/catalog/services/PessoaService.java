@@ -33,6 +33,7 @@ public class PessoaService {
 
 	public void adiciona(String nome, int idade) {
 		Pessoa novaPessoa = new Pessoa(id, nome, idade);
+		
 		if(pessoas.contains(novaPessoa)) {
 			System.out.println("Pessoa já existe");
 		} else {
@@ -56,6 +57,13 @@ public class PessoaService {
 		}
 		
 		return pessoasEncontradas;
+	}
+	
+	public boolean verificaById(int id) {
+		for (Pessoa pessoa : pessoas) {
+			if(pessoa.getId() == id) return true;
+		}
+		return false;
 	}
 
 }
