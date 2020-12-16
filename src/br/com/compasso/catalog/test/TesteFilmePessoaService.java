@@ -17,6 +17,8 @@ public class TesteFilmePessoaService {
         pessoaService.adiciona("Guilherme", 24);
         filmeService.adiciona("Teste 1", "Teste");
         fpService.adiciona(1, 1);
+        fpService.removeById(1, 1);
+        fpService.removeById(2, 2);
         
 	}
 
