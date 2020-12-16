@@ -11,10 +11,12 @@ public class Catalogo {
 
 	public static void main(String[] args) {
 		int controle = -1;
+
 		Scanner sc = new Scanner(System.in);
 		Scanner scId = new Scanner(System.in);
 		Scanner scNome = new Scanner(System.in);
 		PessoaService pessoaService = new PessoaService();
+		pessoaService.adiciona("felipe", 22);
 		do {
 			controle = -1;
 			System.out.println("Opção 1: Fazer Login");
@@ -37,9 +39,9 @@ public class Catalogo {
 			case 1:
 				int iD = -1;
 				System.out.println("Você escolheu fazer login");
-				System.out.println("Insira o ID do usuário desejado: ");
+				System.out.println("Id      Nome         Idade");
 				pessoaService.imprimeTodos().forEach(pessoa -> System.out.println(pessoa));
-
+				System.out.println("Insira o ID do usuário desejado: ");
 				if (scId.hasNextInt()) {
 					iD = scId.nextInt();
 					scId.nextLine();
@@ -69,7 +71,7 @@ public class Catalogo {
 				break;
 			case 3:
 				System.out.println("Programa encerrado!");
-				
+
 				System.exit(0);
 				break;
 
@@ -86,19 +88,18 @@ public class Catalogo {
 
 	public static void menuPrincipal() {
 		int controle = -1;
+
 		Scanner sc = new Scanner(System.in);
 		FilmeService filmeService = new FilmeService();
-
+		filmeService.adiciona("mto bom", "cyberpunk");
 		do {
-			System.out.println("Opção 1: Adicionar um novo Filme"); //ok
-			System.out.println("Opção 2: Remover um Filme"); //ok
-			System.out.println("Opção 3: Editar um Filme");
-			System.out.println("Opção 4: Listar Filmes");
-			System.out.println("Opção 5: Adicionar Pessoa");
-			System.out.println("Opção 6: Remover Pessoa");
-			System.out.println("Opção 7: Editar Pessoa");
+			System.out.println("Opção 1: Adicionar um novo Filme"); // ok
+			System.out.println("Opção 2: Remover um Filme"); // ok
+			System.out.println("Opção 3: Listar Filmes"); //ok
+			System.out.println("Opção 5: Remover Pessoa");
+			System.out.println("Opção 6: Editar Pessoa");
 			System.out.println("================================");
-			System.out.println("Insira um número entre 1 e 7:");
+			System.out.println("Insira um número entre 1 e 6:");
 
 			controle = sc.nextInt();
 			sc.nextLine();
@@ -119,20 +120,22 @@ public class Catalogo {
 			case 2:
 				int id = 0;
 				System.out.println("Você escolheu Remover um Filme");
-				filmeService.imprimeTodos();
+				filmeService.imprimeTodos().forEach(filme -> System.out.println(filme));
 				System.out.println("Insira o ID que deseja remover:");
 				id = sc.nextInt();
 				sc.nextLine();
-				filmeService.removeById(id);
+				
+				if(filmeService.removeById(id))
 				System.out.println("Filme Removido!");
 				break;
 			case 3:
-				System.out.println("Você escolheu 3");
-
+				System.out.println("Você escolheu Listar Filmes");
+				filmeService.imprimeTodos().forEach(filme -> System.out.println(filme));
+				System.out.println("");
 				break;
 			case 4:
-				System.out.println("Você escolheu 4");
-
+				System.out.println("");
+				
 				break;
 			default:
 				System.out.println("Número inválido");
