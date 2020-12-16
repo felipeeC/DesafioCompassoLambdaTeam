@@ -20,7 +20,7 @@ public class FilmePessoaService {
 	public boolean removeById(int idPessoa, int idFilme) {
 		
 		for (FilmePessoa filmePessoa : fp) {
-			if(filmePessoa.getPessoa().getId() == idPessoa && filmePessoa.getFilme().getId() == idFilme) {
+			if(filmePessoa.getIdFilme() == idFilme && filmePessoa.getIdPessoa() == idPessoa) {
 				fp.remove(filmePessoa);
 				System.out.println("Filme removido com sucesso!");
 				return true;
@@ -31,11 +31,16 @@ public class FilmePessoaService {
 		return false;
 	}
 
-	public void adiciona(Pessoa pessoa, Filme filme) {
+	public void adiciona( int idFilme, int idPessoa) {
 		
-		FilmePessoa filmepessoa = new FilmePessoa(filme, pessoa);
+		FilmePessoa filmepessoa = new FilmePessoa(idFilme, idPessoa);
 		
-		fp.add(filmepessoa);
+		if(!fp.contains(filmepessoa)) {
+			fp.add(filmepessoa);
+			System.out.println("FilmePessoa adicionado com sucesso!");
+		} else {
+			System.out.println("Já existe registro para este Filme e esta Pessoa!");
+		}
 	}
 
 }
