@@ -2,31 +2,46 @@ package br.com.compasso.catalog.models;
 
 public class FilmePessoa {
 
-	private Filme filme;
-	private Pessoa pessoa;
+	private int idFilme;
+	private int idPessoa;
 	
-	public FilmePessoa(Filme filme, Pessoa pessoa) {
-		super();
-		this.filme = filme;
-		this.pessoa = pessoa;
+	public FilmePessoa(int idFilme, int idPessoa) {
+		this.idFilme = idFilme;
+		this.idPessoa = idPessoa;
 	}
 	
 	//Getters e Setters
 
-	public Filme getFilme() {
-		return filme;
+	public int getIdFilme() {
+		return idFilme;
 	}
 
-	public void setFilme(Filme filme) {
-		this.filme = filme;
+	public void setIdFilme(int idFilme) {
+		this.idFilme = idFilme;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
+	public int getIdPessoa() {
+		return idPessoa;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setIdPessoa(int idPessoa) {
+		this.idPessoa = idPessoa;
 	}
 	
+	
+	//Equals
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		
+		FilmePessoa outraRef = (FilmePessoa) obj;
+		
+		if(this.idFilme != outraRef.idFilme) return false;
+		if(this.idPessoa != outraRef.idPessoa) return false;
+		
+		return true;
+	}
+
 }
