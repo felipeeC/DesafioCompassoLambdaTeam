@@ -2,12 +2,13 @@ package br.com.compasso.catalog.services;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import br.com.compasso.catalog.models.Filme;
-import br.com.compasso.catalog.models.Pessoa;
 
 public class FilmeService {
 
 	private List<Filme> filmes = new ArrayList<>();
+	private int id = 0;
 
 	// Métodos
 
@@ -35,7 +36,8 @@ public class FilmeService {
 	}
 
 	public void adiciona(String descricao, String nome) {
-		Filme filme = new Filme(descricao, nome);
+		Filme filme = new Filme(id, descricao, nome);
+		id++;
 		if (descricao != null && nome != null) {
 			filmes.add(filme);
 		}

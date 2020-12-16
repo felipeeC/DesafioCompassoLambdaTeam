@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Filme {
 	
-	private static int id;
+	private int id;
 	private String descricao;
 	private String nome;
 	private String comentario;
@@ -21,9 +21,9 @@ public class Filme {
 		
 	}
 
-	public Filme(String descricao, String nome) {
+	public Filme(int id, String descricao, String nome) {
 		super();
-		Filme.id++;
+		this.id = id;
 		this.descricao = descricao;
 		this.nome = nome;
 		
@@ -132,6 +132,11 @@ public class Filme {
 
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
+	}
+	
+	@Override
+	public String toString() {
+		return this.id + "\t" + this.nome + "\t\t" + this.descricao;
 	}
 	
 }
