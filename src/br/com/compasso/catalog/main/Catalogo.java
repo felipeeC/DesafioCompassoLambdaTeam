@@ -2,6 +2,7 @@ package br.com.compasso.catalog.main;
 
 import java.util.Scanner;
 
+import br.com.compasso.catalog.services.FilmePessoaService;
 import br.com.compasso.catalog.services.FilmeService;
 import br.com.compasso.catalog.services.PessoaService;
 
@@ -19,6 +20,7 @@ public class Catalogo {
 		pessoaService.adiciona("felipe", 22);
 		do {
 			controle = -1;
+			System.out.println("================================");
 			System.out.println("Opção 1: Fazer Login");
 			System.out.println("Opção 2: Criar nova conta");
 			System.out.println("Opção 3: Encerrar Programa");
@@ -86,6 +88,26 @@ public class Catalogo {
 		
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// ============================Methods====================
 
 	public static void menuPrincipal() {
@@ -94,14 +116,20 @@ public class Catalogo {
 		Scanner sc = new Scanner(System.in);
 		FilmeService filmeService = new FilmeService();
 		filmeService.adiciona("mto bom", "cyberpunk");
+		FilmePessoaService filmePessoaService = new FilmePessoaService();
+		filmePessoaService.adiciona(0, 0);
 		do {
+			//clearConsole();
+			System.out.println("================================");
 			System.out.println("Opção 1: Adicionar um novo Filme"); // ok
 			System.out.println("Opção 2: Remover um Filme"); // ok
 			System.out.println("Opção 3: Listar Filmes"); //ok
-			System.out.println("Opção 5: Remover Pessoa");
-			System.out.println("Opção 6: Editar Pessoa");
+			System.out.println("Opção 4: Excluir conta"); //
+			System.out.println("Opção 5: Editar Pessoa");//
+			System.out.println("Opção 6: Adicionar Filme ao meu catálogo"); //ok
+			System.out.println("Opção 7: Remover Filme da Minha Lista");
 			System.out.println("================================");
-			System.out.println("Insira um número entre 1 e 6:");
+			System.out.println("Insira um número entre 1 e 7:");
 
 			controle = sc.nextInt();
 			sc.nextLine();
@@ -139,6 +167,30 @@ public class Catalogo {
 				System.out.println("");
 				
 				break;
+			case 5:
+				System.out.println(" ");
+				
+				break;
+			case 6:
+				System.out.println("Você escolheu Adicionar Filme ao meu catálogo ");
+				System.out.println("Id      Nome               Descrição");
+				filmePessoaService.imprimeTodos(userId).forEach(filme -> System.out.println(filme));
+				System.out.println("");
+				System.out.println("Insira o Id do filme que deseja adicionar à lista:");
+				int filmeId = sc.nextInt();
+				sc.nextLine();
+				filmePessoaService.imprimeTodos(userId).forEach(filmePessoa -> System.out.println(filmePessoa));;
+				filmePessoaService.adiciona(filmeId, userId);
+				
+				break;
+			case 7:
+				System.out.println("Você escolheu Remover Filme da Minha Lista");
+				
+				filmeId = sc.nextInt();
+				sc.nextLine();
+				filmePessoaService.removeById(filmeId, userId);
+				
+				break;
 			default:
 				System.out.println("Número inválido");
 				break;
@@ -147,5 +199,16 @@ public class Catalogo {
 
 		} while (controle != 0);
 	}
+	
+	public final static void clearConsole(){
 
-}
+		for(int i = 0; i <= 20; i++){
+
+            System.out.println();
+
+      }
+	}
+	
+    }
+
+
