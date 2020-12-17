@@ -11,7 +11,7 @@ public class FilmeService {
 	private int id = 0;
 
 	// Métodos
-	
+
 	public void imprimeById(int idFilme) {
 		for (Filme filme : filmes) {
 			if (filme.getId() == idFilme) {
@@ -45,8 +45,8 @@ public class FilmeService {
 
 	public void adiciona(String descricao, String nome) {
 		String nomeMaiusculo = nome.toUpperCase();
-		
-		if(filmes.isEmpty()) {
+
+		if (filmes.isEmpty()) {
 			Filme filme = new Filme(id, descricao, nomeMaiusculo);
 			id++;
 			if (descricao != null && nome != null) {
@@ -56,7 +56,7 @@ public class FilmeService {
 		} else {
 			try {
 				for (Filme filme : filmes) {
-					if(filme.getNome().equals(nomeMaiusculo)) {
+					if (filme.getNome().equals(nomeMaiusculo)) {
 						System.out.println("Este filme já está inserido!");
 						break;
 					}
@@ -68,7 +68,7 @@ public class FilmeService {
 					}
 				}
 			} catch (Exception e) {
-				
+
 			}
 		}
 
@@ -76,6 +76,18 @@ public class FilmeService {
 
 	public List<Filme> imprimeTodos() {
 		return filmes;
+	}
+
+	public boolean verificaById(int id) {
+		for (Filme filme : filmes) {
+			if (filme.getId() == id) {
+				return true;
+			}
+		}
+
+		System.out.println("Filme com esse id já existe!");
+		return false;
+
 	}
 
 }
