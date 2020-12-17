@@ -30,11 +30,11 @@ public class FilmePessoaService {
 		
 		if(fp.contains(filmepessoa)) {
 			fp.remove(filmepessoa);
-			System.out.println("Filme e Pessoa removidos com sucesso!");
+			System.out.println("Filme removido de seu catálogo!");
 			return true;
 		} 
 		
-		System.out.println("O Filme e a Pessoa não estavam em seu catálogo!");
+		System.out.println("O Filme não estava em seu catálogo.");
 		return false;
 		
 	}
@@ -45,9 +45,9 @@ public class FilmePessoaService {
 		
 		if(!fp.contains(filmepessoa)) {
 			fp.add(filmepessoa);
-			System.out.println("Filme e pessoa adicionados com sucesso!");
+			System.out.println("Filme adicionado ao seu catálogo pessoal!");
 		} else {
-			System.out.println("Já existe registro para este Filme e essa Pessoa!");
+			System.out.println("Este filme já está em seu catálogo pessoal.");
 		}
 	}
 
