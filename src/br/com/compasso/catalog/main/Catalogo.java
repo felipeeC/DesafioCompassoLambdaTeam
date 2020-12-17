@@ -84,30 +84,9 @@ public class Catalogo {
 			}
 
 		} while (controle != 0);
-		
-		
+
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	// ============================Methods====================
 
 	public static void menuPrincipal() {
@@ -118,18 +97,21 @@ public class Catalogo {
 		filmeService.adiciona("mto bom", "cyberpunk");
 		FilmePessoaService filmePessoaService = new FilmePessoaService();
 		filmePessoaService.adiciona(0, 0);
+		PessoaService pessoaService = new PessoaService();
 		do {
-			//clearConsole();
+
+			clearConsole();
 			System.out.println("================================");
 			System.out.println("Opção 1: Adicionar um novo Filme"); // ok
 			System.out.println("Opção 2: Remover um Filme"); // ok
-			System.out.println("Opção 3: Listar Filmes"); //ok
-			System.out.println("Opção 4: Excluir conta"); //
-			System.out.println("Opção 5: Editar Pessoa");//
-			System.out.println("Opção 6: Adicionar Filme ao meu catálogo"); //ok
-			System.out.println("Opção 7: Remover Filme da Minha Lista");
+			System.out.println("Opção 3: Listar Todos os Filmes"); // ok
+			System.out.println("Opção 4: Excluir conta"); // ok
+			System.out.println("Opção 5: Editar Pessoa"); // 
+			System.out.println("Opção 6: Adicionar Filme ao meu catálogo"); // ok
+			System.out.println("Opção 7: Remover Filme da Minha Lista"); // ok
+			System.out.println("Opção 8: Ver a minha Lista Pessoal"); // ok
 			System.out.println("================================");
-			System.out.println("Insira um número entre 1 e 7:");
+			System.out.println("Insira um número entre 1 e 8:");
 
 			controle = sc.nextInt();
 			sc.nextLine();
@@ -154,9 +136,9 @@ public class Catalogo {
 				System.out.println("Insira o ID que deseja remover:");
 				id = sc.nextInt();
 				sc.nextLine();
-				
-				if(filmeService.removeById(id))
-				System.out.println("Filme Removido!");
+
+				if (filmeService.removeById(id))
+					System.out.println("Filme Removido!");
 				break;
 			case 3:
 				System.out.println("Você escolheu Listar Filmes");
@@ -164,32 +146,39 @@ public class Catalogo {
 				System.out.println("");
 				break;
 			case 4:
-				System.out.println("");
-				
+				System.out.println("Você escolheu Excluir conta");
+				pessoaService.removeById(userId);
+				System.out.println("Sua conta foi Removida!");
 				break;
 			case 5:
 				System.out.println(" ");
-				
+
 				break;
 			case 6:
 				System.out.println("Você escolheu Adicionar Filme ao meu catálogo ");
 				System.out.println("Id      Nome               Descrição");
-				filmePessoaService.imprimeTodos(userId).forEach(filme -> System.out.println(filme));
+				filmeService.imprimeTodos().forEach(filme -> System.out.println(filme));
 				System.out.println("");
 				System.out.println("Insira o Id do filme que deseja adicionar à lista:");
 				int filmeId = sc.nextInt();
 				sc.nextLine();
-				filmePessoaService.imprimeTodos(userId).forEach(filmePessoa -> System.out.println(filmePessoa));;
 				filmePessoaService.adiciona(filmeId, userId);
-				
 				break;
 			case 7:
 				System.out.println("Você escolheu Remover Filme da Minha Lista");
-				
+				filmePessoaService.imprimeMeusFilmes(userId).forEach(filmePessoa -> {
+					filmeService.imprimeById(filmePessoa.getIdFilme());
+				});
 				filmeId = sc.nextInt();
 				sc.nextLine();
 				filmePessoaService.removeById(filmeId, userId);
-				
+
+				break;
+			case 8:
+				System.out.println("Você escolheu Acessar Minha Lista de Filmes ");
+				filmePessoaService.imprimeMeusFilmes(userId).forEach(filmePessoa -> {
+					filmeService.imprimeById(filmePessoa.getIdFilme());
+				});
 				break;
 			default:
 				System.out.println("Número inválido");
@@ -199,16 +188,18 @@ public class Catalogo {
 
 		} while (controle != 0);
 	}
-	
-	public final static void clearConsole(){
 
-		for(int i = 0; i <= 20; i++){
+	public final static void clearConsole() {
 
-            System.out.println();
+		for (int i = 0; i <= 5; i++) {
 
-      }
+			System.out.println();
+
+		}
 	}
 	
-    }
-
-
+	
+	
+	
+	
+}
