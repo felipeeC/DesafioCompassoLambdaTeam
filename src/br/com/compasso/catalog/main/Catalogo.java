@@ -82,6 +82,8 @@ public class Catalogo {
 			}
 
 		} while (controle != 0);
+		
+		
 	}
 
 	// ============================Methods====================
