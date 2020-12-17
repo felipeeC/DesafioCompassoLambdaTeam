@@ -10,6 +10,7 @@ public class TesteFilmeService {
 		FilmeService filmeService = new FilmeService();
 		
 		filmeService.adiciona("Filme Teste", "Teste");
+		filmeService.adiciona("Filme Teste", "Teste");
 		filmeService.adiciona("Filme Teste 2", "Teste 2");
 		filmeService.adiciona("Filme Teste 3", "Teste 3");
 		filmeService.adiciona("Filme Teste 4", "Teste 4");

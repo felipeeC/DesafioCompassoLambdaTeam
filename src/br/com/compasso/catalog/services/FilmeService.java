@@ -14,11 +14,11 @@ public class FilmeService {
 
 	public boolean imprimeByName(String nomeFilme) {
 		for (Filme f : filmes) {
-			if (f.getNome() == nomeFilme) {
+			if (f.getNome() == nomeFilme.toUpperCase()) {
 				return true;
 			}
 		}
-		
+
 		System.out.println("Filme não encontrado");
 		return false;
 	}
@@ -36,11 +36,44 @@ public class FilmeService {
 	}
 
 	public void adiciona(String descricao, String nome) {
-		Filme filme = new Filme(id, descricao, nome);
-		id++;
-		if (descricao != null && nome != null) {
-			filmes.add(filme);
+		String nomeMaiusculo = nome.toUpperCase();
+		
+		if(filmes.isEmpty()) {
+			Filme filme = new Filme(id, descricao, nomeMaiusculo);
+			id++;
+			if (descricao != null && nome != null) {
+				filmes.add(filme);
+				System.out.println("Filme adicionado!");
+			}
+		} else {
+			try {
+				for (Filme filme : filmes) {
+					if(filme.getNome().equals(nomeMaiusculo)) {
+						System.out.println("Este filme já está inserido!");
+						break;
+					}
+					Filme filmeNovo = new Filme(id, descricao, nomeMaiusculo);
+					id++;
+					if (descricao != null && nome != null) {
+						filmes.add(filmeNovo);
+						System.out.println("Filme adicionado!");
+					}
+				}
+			} catch (Exception e) {
+				
+			}
 		}
+		
+		/*if (filmes.contains(nomeMaiusculo)) {
+			System.out.println("Esse filme já existe!");
+		} else {
+			Filme filme = new Filme(id, descricao, nomeMaiusculo);
+			id++;
+			if (descricao != null && nome != null) {
+				filmes.add(filme);
+				System.out.println("Filme adicionado!");
+			}
+		}*/
 	}
 
 	public List<Filme> imprimeTodos() {
