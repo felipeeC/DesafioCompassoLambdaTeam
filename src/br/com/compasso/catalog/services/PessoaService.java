@@ -14,13 +14,7 @@ public class PessoaService {
 
 	public void removeById(int idPessoa) {
 		
-		Pessoa pessoaRemovida = null; 
-		
-		for (Pessoa pessoa : pessoas) {
-			if(pessoa.getId() == idPessoa) {
-				pessoaRemovida = pessoa;
-			}			
-		}
+		Pessoa pessoaRemovida = this.findById(idPessoa);
 		
 		if(pessoaRemovida != null) {
 			pessoas.remove(pessoaRemovida);
@@ -29,6 +23,40 @@ public class PessoaService {
 			System.out.println("Não foi encotrada nenhuma pessoa com esse id!");
 		}
 
+	}
+	
+	public void editaNomePessoa(int idPessoa, String novoNome) {
+		
+		if(novoNome != null && novoNome != "") {			
+			Pessoa pessoaEditada = this.findById(idPessoa);
+			
+			if(pessoaEditada != null) {
+				pessoaEditada.setNome(novoNome);
+				System.out.println("Pessoa editada com sucesso!");
+			} else {
+				System.out.println("Pessoa não encontrada!");
+			}
+		} else {
+			System.out.println("Nome inválido!");
+		}
+		
+		
+	}
+	
+	public void editaIdadePessoa(int idPessoa, int novaIdade) {
+		if(novaIdade > 0) {
+			Pessoa pessoaEditada = this.findById(idPessoa);
+			if(pessoaEditada != null) {
+				pessoaEditada.setIdade(novaIdade);
+				System.out.println("Pessoa editada com sucesso");
+			} else {
+				System.out.println("Pessoa não encontrada!");
+			}
+		} else {
+			System.out.println("Idade inválida!");
+		}
+		
+		
 	}
 
 	public void adiciona(String nome, int idade) {
@@ -45,6 +73,18 @@ public class PessoaService {
 	
 	public List<Pessoa> imprimeTodos (){
 		return pessoas;
+	}
+	
+	public Pessoa findById(int idPessoa) {
+		Pessoa pessoaEncontrada = null;
+		
+		for (Pessoa pessoa : pessoas) {
+			if(pessoa.getId() == idPessoa) {
+				pessoaEncontrada = pessoa;
+			}
+		}
+		
+		return pessoaEncontrada;
 	}
 	
 	public List<Pessoa> imprimeByName(String nome) {

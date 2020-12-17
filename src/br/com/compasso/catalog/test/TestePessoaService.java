@@ -28,7 +28,7 @@ public class TestePessoaService {
 		System.out.println("listagem de pessoas com nome especifico");
 		System.out.println("--------------");
 		
-		pessoaService.imprimeByName("Augusto")
+		pessoaService.imprimeByName("Guilherme")
 			.forEach(pessoa -> System.out.println(pessoa));
 
 		System.out.println();
@@ -47,6 +47,11 @@ public class TestePessoaService {
 		System.out.println("--------------");
 		
 		pessoaService.removeById(10);
+		
+		pessoaService.editaNomePessoa(3, "Felipe Moraes");
+		pessoaService.editaIdadePessoa(3, 22);
+		pessoaService.editaNomePessoa(3, "");
+		pessoaService.editaIdadePessoa(3, -22);
 		
 		pessoaService.imprimeTodos()
 			.forEach(pessoa -> System.out.println(pessoa));
