@@ -17,7 +17,7 @@ public class Catalogo {
 		Scanner scId = new Scanner(System.in);
 		Scanner scNome = new Scanner(System.in);
 		PessoaService pessoaService = new PessoaService();
-		pessoaService.adiciona("felipe", 22);
+		inicializaPessoaService(pessoaService);
 		do {
 			controle = -1;
 			System.out.println("================================");
@@ -50,7 +50,7 @@ public class Catalogo {
 
 					if (pessoaService.verificaById(iD)) {
 						userId = iD;
-						menuPrincipal();
+						menuPrincipal(pessoaService);
 					} else {
 						System.out.println("Usuário não encontrado");
 						break;
@@ -89,15 +89,14 @@ public class Catalogo {
 
 	// ============================Methods====================
 
-	public static void menuPrincipal() {
+	public static void menuPrincipal(PessoaService pessoaService) {
 		int controle = -1;
 
 		Scanner sc = new Scanner(System.in);
 		FilmeService filmeService = new FilmeService();
-		filmeService.adiciona("mto bom", "cyberpunk");
+		inicializaFilmeService(filmeService);
 		FilmePessoaService filmePessoaService = new FilmePessoaService();
 		filmePessoaService.adiciona(0, 0);
-		PessoaService pessoaService = new PessoaService();
 		do {
 
 			clearConsole();
@@ -106,7 +105,7 @@ public class Catalogo {
 			System.out.println("Opção 2: Remover um Filme"); // ok
 			System.out.println("Opção 3: Listar Todos os Filmes"); // ok
 			System.out.println("Opção 4: Excluir conta"); // ok
-			System.out.println("Opção 5: Editar Pessoa"); // 
+			System.out.println("Opção 5: Editar Pessoa"); //
 			System.out.println("Opção 6: Adicionar Filme ao meu catálogo"); // ok
 			System.out.println("Opção 7: Remover Filme da Minha Lista"); // ok
 			System.out.println("Opção 8: Ver a minha Lista Pessoal"); // ok
@@ -148,11 +147,12 @@ public class Catalogo {
 			case 4:
 				System.out.println("Você escolheu Excluir conta");
 				pessoaService.removeById(userId);
-				System.out.println("Sua conta foi Removida!");
+				System.out.println("Sua conta foi Removida! Adeus!");
+				controle = 0;
 				break;
 			case 5:
-				System.out.println(" ");
-
+				System.out.println("Você escolheu Editar Pessoa");
+				menuEditaPessoa(pessoaService);
 				break;
 			case 6:
 				System.out.println("Você escolheu Adicionar Filme ao meu catálogo ");
@@ -197,9 +197,66 @@ public class Catalogo {
 
 		}
 	}
-	
-	
-	
-	
-	
+
+	public static void menuEditaPessoa(PessoaService pessoaService) {
+		Scanner sc = new Scanner(System.in);
+		int controle;
+		do {
+			
+			System.out.println("================================");
+			System.out.println(pessoaService.findById(userId).toString());
+			System.out.println("Opção 1: Edita Nome");
+			System.out.println("Opção 2: Edita Idade");
+			System.out.println("Opção 3: Menu Anterior");
+			System.out.println("================================");
+			System.out.println("Entre com um número entre 1 e 2:");
+			controle = sc.nextInt();
+			sc.nextLine();
+			
+			switch (controle) {
+
+			case 1: 
+				System.out.println("Você selecionou Editar Nome");
+				System.out.println("Insira o novo nome:");
+				String novoNome = sc.nextLine();
+				pessoaService.editaNomePessoa(userId, novoNome);
+				
+				break;
+			case 2:
+				System.out.println("Você selecionou Editar Nome");
+				System.out.println("Insira a nova idade:");
+				int novaIdade = sc.nextInt();
+				sc.nextLine();
+				pessoaService.editaIdadePessoa(userId, novaIdade);
+				break;
+			default:
+				controle = 0;
+				break;
+			}
+			
+
+		 
+
+		} while (controle != 0);
+		
+	}
+
+	public static void inicializaPessoaService(PessoaService pessoaService) {
+
+		pessoaService.adiciona("Felipe", 22);
+		pessoaService.adiciona("Guilherme", 23);
+		pessoaService.adiciona("Augusto", 24);
+		pessoaService.adiciona("Adriana", 25);
+		pessoaService.adiciona("Eduardo", 26);
+
+	}
+
+	public static void inicializaFilmeService(FilmeService filmeService) {
+
+		filmeService.adiciona("comédia", "Vovozona");
+		filmeService.adiciona("comédia", "Vovozona2");
+		filmeService.adiciona("animação", "Carros");
+		filmeService.adiciona("sangue", "Vikings");
+	}
+
 }
