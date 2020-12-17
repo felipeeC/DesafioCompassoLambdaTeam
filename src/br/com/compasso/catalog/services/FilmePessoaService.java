@@ -13,8 +13,15 @@ public class FilmePessoaService {
 
 	// Métodos
 
-	public List<FilmePessoa> imprimeTodos(int idPessoa) {
-		return fp;
+	public List<FilmePessoa> imprimeMeusFilmes(int idPessoa) {
+		List<FilmePessoa> meusFilmes = new ArrayList<>();
+		for (FilmePessoa filmePessoa : fp) {
+			if(filmePessoa.getIdPessoa() == idPessoa) {
+				meusFilmes.add(filmePessoa);
+			}
+		}
+		
+		return meusFilmes;
 	}
 
 	public boolean removeById(int idFilme, int idPessoa) {
