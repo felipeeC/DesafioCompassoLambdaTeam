@@ -13,7 +13,7 @@ public class FilmePessoaService {
 
 	// Métodos
 
-	public List<FilmePessoa> imprimeTodos(int idFilme, int idPessoa) {
+	public List<FilmePessoa> imprimeTodos(int idPessoa) {
 		return fp;
 	}
 
@@ -23,11 +23,11 @@ public class FilmePessoaService {
 		
 		if(fp.contains(filmepessoa)) {
 			fp.remove(filmepessoa);
-			System.out.println("FilmePessoa removido com sucesso!");
+			System.out.println("Filme e Pessoa removidos com sucesso!");
 			return true;
 		} 
 		
-		System.out.println("O FilmePessoa não estava em seu catálogo!");
+		System.out.println("O Filme e a Pessoa não estavam em seu catálogo!");
 		return false;
 		
 	}
@@ -38,9 +38,9 @@ public class FilmePessoaService {
 		
 		if(!fp.contains(filmepessoa)) {
 			fp.add(filmepessoa);
-			System.out.println("FilmePessoa adicionado com sucesso!");
+			System.out.println("Filme e pessoa adicionados com sucesso!");
 		} else {
-			System.out.println("Já existe registro para este FilmePessoa!");
+			System.out.println("Já existe registro para este Filme e essa Pessoa!");
 		}
 	}
 
