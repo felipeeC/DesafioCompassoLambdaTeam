@@ -13,11 +13,11 @@ public class FilmePessoaService {
 
 	// Métodos
 
-	public List<FilmePessoa> imprimeById(int idPessoa) {
+	public List<FilmePessoa> imprimeTodos(int idFilme, int idPessoa) {
 		return fp;
 	}
 
-	public boolean removeById(int idPessoa, int idFilme) {
+	public boolean removeById(int idFilme, int idPessoa) {
 		
 		FilmePessoa filmepessoa = new FilmePessoa(idFilme, idPessoa);
 		
