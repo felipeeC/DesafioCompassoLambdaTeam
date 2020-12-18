@@ -60,10 +60,10 @@ public class Pessoa {
 		
 		Pessoa outraPessoa = (Pessoa) obj;
 		
-		if(this.nome != outraPessoa.nome) return false;
+		if(!this.nome.toUpperCase().equals(outraPessoa.nome.toUpperCase())) return false;
 		if(this.idade != outraPessoa.idade) return false;
 		
-		return  true;
+		return true;
 		
 	}	
 	
