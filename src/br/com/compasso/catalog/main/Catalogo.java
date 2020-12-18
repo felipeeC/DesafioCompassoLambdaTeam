@@ -126,7 +126,6 @@ public class Catalogo {
 				System.out.println("Insira a descrição do filme:");
 				descricao = sc.nextLine();
 				filmeService.adiciona(descricao, nome);
-				System.out.println("Filme Adicionado!");
 				break;
 			case 2:
 				int id = 0;
@@ -202,7 +201,7 @@ public class Catalogo {
 		Scanner sc = new Scanner(System.in);
 		int controle;
 		do {
-			
+
 			System.out.println("================================");
 			System.out.println(pessoaService.findById(userId).toString());
 			System.out.println("Opção 1: Edita Nome");
@@ -212,15 +211,15 @@ public class Catalogo {
 			System.out.println("Entre com um número entre 1 e 2:");
 			controle = sc.nextInt();
 			sc.nextLine();
-			
+
 			switch (controle) {
 
-			case 1: 
+			case 1:
 				System.out.println("Você selecionou Editar Nome");
 				System.out.println("Insira o novo nome:");
 				String novoNome = sc.nextLine();
 				pessoaService.editaNomePessoa(userId, novoNome);
-				
+
 				break;
 			case 2:
 				System.out.println("Você selecionou Editar Nome");
@@ -233,12 +232,9 @@ public class Catalogo {
 				controle = 0;
 				break;
 			}
-			
-
-		 
 
 		} while (controle != 0);
-		
+
 	}
 
 	public static void inicializaPessoaService(PessoaService pessoaService) {
@@ -255,6 +251,9 @@ public class Catalogo {
 
 		filmeService.adiciona("comédia", "Vovozona");
 		filmeService.adiciona("comédia", "Vovozona2");
+		filmeService.adiciona("comédia", "Vovozona2");
+		filmeService.adiciona("Filme Teste", "Teste");
+		filmeService.adiciona("Filme Teste", "Teste");
 		filmeService.adiciona("animação", "Carros");
 		filmeService.adiciona("sangue", "Vikings");
 	}
