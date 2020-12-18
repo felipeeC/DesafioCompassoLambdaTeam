@@ -43,20 +43,16 @@ public class Filme {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		if (this == obj) return true;
+		if (obj == null) return false;
+		
 		Filme other = (Filme) obj;
-		if (id != other.id)
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
+		
+		String nomeMaiusculo = this.nome.toUpperCase();
+		String otherMaiusculo = other.nome.toUpperCase();
+		
+		if(!nomeMaiusculo.equals(otherMaiusculo)) return false;
+		
 		return true;
 	}
 	
